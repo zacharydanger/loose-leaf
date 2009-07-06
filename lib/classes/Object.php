@@ -1,4 +1,6 @@
 <?php
+require_once 'Object_Factory.php';
+
 /**
  * This is a basic Active Record style class. Handles the CRUD aspects that are so tiring
  * and gives you access to getWhatever() and setWhatever($new_value).
