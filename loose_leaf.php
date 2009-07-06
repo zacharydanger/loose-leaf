@@ -21,4 +21,6 @@ require_once 'lib/classes/Router.php';
 require_once 'lib/classes/Dispatcher.php';
 require_once 'lib/classes/Controller.php';
 require_once 'lib/classes/Object.php';
+require_once 'lib/classes/Template.php';
+require_once 'lib/classes/View.php';
 ?>
