@@ -23,6 +23,7 @@ class Dispatcher {
 	}
 
 	private function _setAction($action) {
+		$this->_action = 'index';
 		if(true == isset($this->_controller)) {
 			if(false == is_null($action) && false == empty($action)) {
 				if(true == method_exists($this->_controller, $action)) {
