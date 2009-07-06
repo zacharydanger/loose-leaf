@@ -13,9 +13,8 @@ abstract class Controller {
 	}
 
 	public function render() {
-		$template = new Template($this->_template);
-		$template->bind('VIEW', $this->_view);
-		$template->render();	
+		$this->_template->bind('VIEW', $this->_view);
+		$this->_template->render();
 	}
 
 	public function setUser(User $user) {
