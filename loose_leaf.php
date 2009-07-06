@@ -23,4 +23,9 @@ require_once 'lib/classes/Controller.php';
 require_once 'lib/classes/Object.php';
 require_once 'lib/classes/Template.php';
 require_once 'lib/classes/View.php';
+
+if(true == LL_Config::$config['db_jedi']['enabled']) {
+	require_once 'lib/classes/DB_Jedi.php';
+	$DBJ = new DB_Jedi(LL_Config::$config['db_jedi']['dir']);
+}
 ?>
