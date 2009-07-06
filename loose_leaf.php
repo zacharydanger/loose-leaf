@@ -16,4 +16,9 @@ try {
 	echo $e->getMessage();
 	exit(1);
 }
+
+require_once 'lib/classes/Router.php';
+require_once 'lib/classes/Dispatcher.php';
+require_once 'lib/classes/Controller.php';
+require_once 'lib/classes/Object.php';
 ?>
