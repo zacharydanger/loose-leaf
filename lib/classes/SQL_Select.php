@@ -5,6 +5,7 @@ class SQL_Select {
 	private $_table_aliases = array();
 	private $_where_clause_list = array();
 	private $_bound_variables = array();
+	private $_left_joins = array();
 
 	public function __construct($field_list = array()) {
 		foreach($field_list as $field) {
@@ -25,6 +26,16 @@ class SQL_Select {
 		if(false == is_null($alias)) {
 			$this->_table_aliases[$table] = $alias;
 		}
+		return $this;
+	}
+
+	public function leftJoin($table, $field_1, $field_2) {
+		$join_array = array(
+				'table' => $table,
+				'field_1' => $field_1,
+				'field_2' => $field_2
+			);
+		$this->_left_joins[] = $join_array;
 		return $this;
 	}
 
@@ -59,6 +70,14 @@ class SQL_Select {
 				$table_list[] = $table . ' ' . $alias;	
 			}
 			$sql .= implode(', ', $table_list);
+		}
+
+		if(count($this->_left_joins) > 0) {
+			foreach($this->_left_joins as $join_data) {
+				$sql .= " LEFT JOIN " . $join_data['table'];
+				$sql .= " ON " . $join_data['field_1'] . ' = ' 
+					. $join_data['field_2']. " ";
+			}
 		}
 
 		if(count($this->_where_clause_list) > 0) {
