@@ -404,8 +404,14 @@ class Object {
 	protected function _update() {
 		if(intval($this->_ID) > 0 && false == is_null($this->_table) && false == is_null($this->_table_id)) {
 			$data = $this->_makeRecord();
-			$where = "WHERE " . $this->_table_id . " = '" . intval($this->_ID) . "'";
-			db_perform($this->_table, $data, SQL_UPDATE, $where);
+			$where = $this->_table_id . " = '" . intval($this->_ID) . "'";
+			
+			$sql = SQL::get()->update($this->_table)->where($where);
+			foreach($data as $field => $value) {
+				$sql->set($field, $value);
+			}
+
+			db_query($sql);
 		}
 	}
 

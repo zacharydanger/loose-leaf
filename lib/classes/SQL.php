@@ -14,5 +14,12 @@ class SQL {
 	public function select() {
 		return new SQL_Select(func_get_args());
 	}
+
+	/**
+	 * Builds a new SQL_Update object and returns it.
+	 */
+	public function update($table) {
+		return new SQL_Update($table);
+	}
 }
 ?>
