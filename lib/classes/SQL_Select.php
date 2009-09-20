@@ -1,10 +1,8 @@
 <?php
-class SQL_Select {
+class SQL_Select extends SQL_Statement {
 	private $_selected_fields = array();
 	private $_from_tables = array();
 	private $_table_aliases = array();
-	private $_where_clause_list = array();
-	private $_bound_variables = array();
 	private $_left_joins = array();
 
 	public function __construct($field_list = array()) {
@@ -36,16 +34,6 @@ class SQL_Select {
 				'field_2' => $field_2
 			);
 		$this->_left_joins[] = $join_array;
-		return $this;
-	}
-
-	public function where($where_clause) {
-		$this->_where_clause_list[] = $where_clause;
-		return $this;
-	}
-
-	public function bind($field_name, $value) {
-		$this->_bound_variables[$field_name] = $value;
 		return $this;
 	}
 
@@ -88,10 +76,6 @@ class SQL_Select {
 			$sql = str_replace('@'.$var, $val, $sql);
 		}
 		return $sql;
-	}
-
-	public function __toString() {
-		return $this->getSql();
 	}
 }
 ?>
