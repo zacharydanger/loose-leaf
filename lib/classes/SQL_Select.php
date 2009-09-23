@@ -4,6 +4,10 @@ class SQL_Select extends SQL_Statement {
 	private $_from_tables = array();
 	private $_table_aliases = array();
 	private $_left_joins = array();
+	private $_order_by = array();
+
+	const ASC = 'ASC';
+	const DESC = 'DESC';
 
 	public function __construct($field_list = array()) {
 		foreach($field_list as $field) {
@@ -41,12 +45,7 @@ class SQL_Select extends SQL_Statement {
 		$sql = null;
 		if(count($this->_selected_fields) > 0) {
 			$sql .= "SELECT ";
-
-			$clean_fields = array();
-			foreach($this->_selected_fields as $field) {
-				$clean_fields[] = '`' . $field . '`';
-			}
-			$sql .= implode(',', $clean_fields);
+			$sql .= implode(',', $this->_selected_fields);
 			$sql .= "\n";
 		}
 
@@ -72,10 +71,23 @@ class SQL_Select extends SQL_Statement {
 			$sql .= ' WHERE ' . implode(' AND ', $this->_where_clause_list);
 		}
 
+		if(count($this->_order_by) > 0) {
+			$sql .= " ORDER BY ";
+			$sql .= implode(',', $this->_order_by);
+		}
+
 		foreach($this->_bound_variables as $var => $val) {
 			$sql = str_replace('@'.$var, $val, $sql);
 		}
 		return $sql;
+	}
+
+	public function orderBy($field, $direction = self::ASC) {
+		$good_order_direction = array(self::ASC, self::DESC);
+		if(false == in_array($direction, $good_order_direction)) {
+			$direction = self::ASC;
+		}
+		$this->_order_by[] = $field . " " . $direction;
 	}
 }
 ?>
