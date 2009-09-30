@@ -88,6 +88,7 @@ class SQL_Select extends SQL_Statement {
 			$direction = self::ASC;
 		}
 		$this->_order_by[] = $field . " " . $direction;
+		return $this;
 	}
 }
 ?>
