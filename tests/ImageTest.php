@@ -33,7 +33,7 @@ class ImageTest extends PHPUnit_Framework_TestCase {
 		$I = $this->goodImage;
 		$I->resizeToX($X);
 		$image = $I->getImage();
-		$this->assertEquals($X, imagesx($image));
+		$this->assertEquals($X, $image->getImageWidth());
 	}
 	
 	/**
@@ -43,7 +43,7 @@ class ImageTest extends PHPUnit_Framework_TestCase {
 		$I = $this->goodImage;
 		$I->resizeToY($Y);
 		$image = $I->getImage();
-		$this->assertEquals($Y, imagesy($image));
+		$this->assertEquals($Y, $image->getImageHeight());
 	}
 	
 	function pixelProvider() {
@@ -68,18 +68,18 @@ class ImageTest extends PHPUnit_Framework_TestCase {
 		$I = $this->goodImage;
 		$I->resizeTo($size, $size);
 		$image = $I->getImage();
-		$this->assertEquals($size, imagesx($image));
-		$this->assertEquals($size, imagesy($image));
+		$this->assertEquals($size, $image->getImageWidth(), "Bad new width value.");
+		$this->assertEquals($size, $image->getImageHeight(), "Bad new height value.");
 	}
 	
 	function testResizeToFillToX() {
 		$I = $this->goodImage;
-		$new_y = ceil(imagesy($I->getImage()));
-		$new_x = ceil(imagesx($I->getImage()) *.75);
+		$new_y = ceil($I->getImage()->getImageHeight());
+		$new_x = ceil($I->getImage()->getImageWidth() *.75);
 		$I->resizeTo($new_x, $new_y);
 		$image = $I->getImage();
-		$this->assertEquals($new_x, imagesx($image), "X doesn't match new X $new_x");
-		$this->assertEquals($new_y, imagesy($image), "Y doesn't match new Y $new_y");
+		$this->assertEquals($new_x, $image->getImageWidth(), "X doesn't match new X $new_x");
+		$this->assertEquals($new_y, $image->getImageHeight(), "Y doesn't match new Y $new_y");
 	}
 	
 	function percentageProvider() {
@@ -87,7 +87,7 @@ class ImageTest extends PHPUnit_Framework_TestCase {
 		$percentages[] = array(25);
 		//$percentages[] = array(50);
 		//$percentages[] = array(75);		
-		//$percentages[] = array(110																																																																																																																																																																																																																																																																																																																																			);
+		//$percentages[] = array(110);
 		//$percentages[] = array(150);
 		//$percentages[] = array(200);
 		
