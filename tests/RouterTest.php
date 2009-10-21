@@ -1,6 +1,11 @@
 <?php
-require_once 'global.php';
+require_once '../lib/functions/standard_lib.php';
+require_once '../lib/classes/Router.php';
+require_once '../lib/classes/Controller.php';
 
+/**
+ * Stub class for testing the Router.
+ */
 class Foobar_Controller extends Controller { }
 
 class RouterTest extends PHPUnit_Framework_TestCase {
