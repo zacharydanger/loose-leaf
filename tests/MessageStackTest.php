@@ -1,5 +1,6 @@
 <?php
-require_once 'global.php';
+require_once '../lib/functions/standard_lib.php';
+require_once '../lib/classes/Message_Stack.php';
 
 class MessageStackTest extends PHPUnit_Framework_TestCase {
 	public function testAddMessages() {
