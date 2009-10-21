@@ -1,5 +1,5 @@
 <?php
-require_once 'global.php';
+require_once '../lib/classes/Image.php';
 
 class ImageTest extends PHPUnit_Framework_TestCase {
 	protected $testdata_dir;
