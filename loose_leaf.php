@@ -19,6 +19,10 @@ if(true == LL_Config::$config['db']['enabled']) {
 	}
 }
 
+require_once 'lib/classes/SQL_Statement.php';
+require_once 'lib/classes/SQL_Select.php';
+require_once 'lib/classes/SQL_Update.php';
+require_once 'lib/classes/SQL.php';
 require_once 'lib/classes/Router.php';
 require_once 'lib/classes/Dispatcher.php';
 require_once 'lib/classes/Controller.php';
