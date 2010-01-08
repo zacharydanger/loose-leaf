@@ -4,6 +4,7 @@ require_once 'ImageTest.php';
 require_once 'MessageStackTest.php';
 require_once 'RouterTest.php';
 require_once 'DispatcherTest.php';
+require_once 'ControllerTest.php';
 
 class AllTests {
 	public static function suite() {
@@ -12,6 +13,7 @@ class AllTests {
 		$suite->addTestSuite('MessageStackTest');
 		$suite->addTestSuite('RouterTest');
 		$suite->addTestSuite('DispatcherTest');
+		$suite->addTestSuite('ControllerTest');
 		return $suite;
 	}
 }
