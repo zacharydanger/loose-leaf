@@ -23,4 +23,9 @@ class RouterTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('foo', $route['action']);
 		$this->assertEquals('1', $route['id']);
 	}
+
+	public function testControllerNotFoundReturnsFalse() {
+		$class_name = sha1(mt_rand());
+		$this->assertFalse(Router::_findController($class_name));
+	}
 }
