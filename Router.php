@@ -1,4 +1,6 @@
 <?php
+namespace LooseLeaf;
+
 require_once __DIR__ . '/standard_lib.php';
 
 class Router {
