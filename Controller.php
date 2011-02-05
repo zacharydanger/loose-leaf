@@ -1,4 +1,6 @@
 <?php
+namespace LooseLeaf;
+
 require_once __DIR__ . '/exceptions/Redirect_Exception.php';
 
 abstract class Controller { 

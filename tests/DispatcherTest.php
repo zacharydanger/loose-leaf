@@ -4,12 +4,16 @@ require_once dirname(__FILE__) . '/helpers/Dispatcher_Test_Controller.php';
 require_once dirname(__FILE__) . '/helpers/Controller_TestSub.php';
 require_once __DIR__ . '/helpers/Concrete_Renderable.php';
 
-class DispatcherTest extends PHPUnit_Extensions_OutputTestCase {
+class DispatcherTest extends \PHPUnit_Extensions_OutputTestCase {
+	public function setUp() {
+		LooseLeaf\Redirector::unsetOverride();
+	}
+
 	/**
-	 * @expectedException Controller_Not_Found_Exception
+	 * @expectedException LooseLeaf\Controller_Not_Found_Exception
 	 */
 	public function testBadController() {
-		$D = new Dispatcher(sha1(microtime()));
+		$D = new LooseLeaf\Dispatcher(sha1(microtime()));
 	}
 
 	public function testDispatch_RedirectException() {
@@ -17,8 +21,9 @@ class DispatcherTest extends PHPUnit_Extensions_OutputTestCase {
 		$mock_redirector->expects($this->once())
 			->method('redirect')
 			->with('/foobar.php');
-		Redirector::useRedirector($mock_redirector);
-		$D = new Dispatcher('Controller_TestSub', 'subRedirect', '/foobar.php');
+		LooseLeaf\Redirector::useRedirector($mock_redirector);
+
+		$D = new LooseLeaf\Dispatcher('Controller_TestSub', 'subRedirect', '/foobar.php');
 		$D->dispatch();
 	}
 
@@ -28,8 +33,8 @@ class DispatcherTest extends PHPUnit_Extensions_OutputTestCase {
 		$mock_redirector->expects($this->once())
 			->method('redirect')
 			->with($url);
-		Redirector::useRedirector($mock_redirector);
-		$D = new Dispatcher('Controller_TestSub', 'redirRequest', $url);
+		LooseLeaf\Redirector::useRedirector($mock_redirector);
+		$D = new LooseLeaf\Dispatcher('Controller_TestSub', 'redirRequest', $url);
 		$D->dispatch();
 	}
 
@@ -38,7 +43,7 @@ class DispatcherTest extends PHPUnit_Extensions_OutputTestCase {
 		$action = 'returnSomething';
 
 		$this->expectOutputString(Controller_TestSub::returnSomething());
-		$D = new Dispatcher('Controller_TestSub', 'returnSomething', null);
+		$D = new LooseLeaf\Dispatcher('Controller_TestSub', 'returnSomething', null);
 		$D->dispatch();
 	}
 
@@ -52,9 +57,9 @@ class DispatcherTest extends PHPUnit_Extensions_OutputTestCase {
 			->method('returnRenderable')
 			->will($this->returnValue($render_me));
 
-		Controller_Locator::get()->setController('Dispatcher_Test_Controller', $mock_controller);
+		LooseLeaf\Controller_Locator::get()->setController('Dispatcher_Test_Controller', $mock_controller);
 
-		$D = new Dispatcher('Dispatcher_Test_Controller', 'returnRenderable', null);
+		$D = new LooseLeaf\Dispatcher('Dispatcher_Test_Controller', 'returnRenderable', null);
 		$D->dispatch();
 	}
 }

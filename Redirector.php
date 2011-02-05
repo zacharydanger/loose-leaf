@@ -1,4 +1,6 @@
 <?php
+namespace LooseLeaf;
+
 class Redirector {
 	private static $_instance;
 	private static $_override;

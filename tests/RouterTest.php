@@ -3,6 +3,7 @@ require_once __DIR__ . '/../Router.php';
 require_once __DIR__ . '/../Controller.php';
 
 use LooseLeaf\Router as Router;
+use LooseLeaf\Controller as Controller;
 
 class Foobar_Controller extends Controller { /* stub for testing */ }
 

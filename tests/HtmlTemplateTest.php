@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../Html_Template.php';
 require_once __DIR__ . '/helpers/Html_Template_TestSub.php';
 
-class HtmlTemplateTest extends PHPUnit_Extensions_OutputTestCase {
+class HtmlTemplateTest extends \PHPUnit_Extensions_OutputTestCase {
 	/**
 	 * @expectedException Exception
 	 */

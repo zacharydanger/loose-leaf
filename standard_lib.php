@@ -1,4 +1,6 @@
 <?php
+namespace LooseLeaf;
+
 /* Standard stuff used all over the place. */
 
 /**

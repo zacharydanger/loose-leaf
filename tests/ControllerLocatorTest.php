@@ -2,7 +2,9 @@
 require_once __DIR__ . '/helpers/Controller_TestSub.php';
 require_once __DIR__ . '/../Controller_Locator.php';
 
-class ControllerLocatorTest extends PHPUnit_Framework_TestCase {
+use LooseLeaf\Controller_Locator as Controller_Locator;
+
+class ControllerLocatorTest extends \PHPUnit_Framework_TestCase {
 	public function testFindController() {
 		$this->assertEquals(new Controller_TestSub(), Controller_Locator::get()->findController('Controller_TestSub'));
 	}

@@ -1,10 +1,12 @@
 <?php
+namespace LooseLeaf;
+
 require_once __DIR__ . '/interfaces/Redirectable.php';
 
 /**
  * Simple class that acts as a request to redirect.
  */
-class Redirect_Request implements Redirectable {
+class Redirect_Request implements \Redirectable {
 	private $_location;
 
 	public function __construct($location) {

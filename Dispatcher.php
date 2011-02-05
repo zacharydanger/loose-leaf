@@ -1,4 +1,6 @@
 <?php
+namespace LooseLeaf;
+
 require_once dirname(__FILE__) . '/exceptions/Dispatcher_Permission_Exception.php';
 require_once dirname(__FILE__) . '/exceptions/Controller_Not_Found_Exception.php';
 require_once dirname(__FILE__) . '/Redirector.php';
@@ -53,15 +55,15 @@ class Dispatcher {
 			$action_name = $this->_action;
 			try {
 				$output = $C->$action_name($this->_id);
-				if(true == ($output instanceof Redirectable)) {
-					redirect($output->getLocation());
-				} elseif($output instanceof Renderable) {
+				if(true == ($output instanceof \Redirectable)) {
+					Redirector::get()->redirect($output->getLocation());
+				} elseif($output instanceof \Renderable) {
 					$output->render();
 				} elseif(false == is_null($output)) {
 					echo $output;
 				}
 			} catch(Redirect_Exception $e) {
-				redirect($e->getLocation());
+				Redirector::get()->redirect($e->getLocation());
 			}
 		}
 	}

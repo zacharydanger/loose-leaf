@@ -1,10 +1,12 @@
 <?php
+namespace LooseLeaf;
+
 require_once __DIR__ . '/../interfaces/Redirectable.php';
 
 /**
  * Class for redirecting.
  */
-class Redirect_Exception extends Exception implements Redirectable {
+class Redirect_Exception extends \Exception implements \Redirectable {
 	const DEFAULT_LOCATION = '/';
 
 	private $_location;
