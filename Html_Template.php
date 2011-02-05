@@ -1,11 +1,13 @@
 <?php
+namespace LooseLeaf;
+
 class Html_Template {
 	protected $_file;
 	protected $_vars = array();
 
 	public function __construct($file_name) {
 		if(false == file_exists($file_name)) {
-			throw new Exception("View '" . $file_name . "' doesn't exist.");
+			throw new \Exception("View '" . $file_name . "' doesn't exist.");
 		}
 		$this->_file = $file_name;
 	}

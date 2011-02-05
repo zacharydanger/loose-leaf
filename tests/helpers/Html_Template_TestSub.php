@@ -4,7 +4,7 @@ require_once dirname(__FILE__) . '/../../Html_Template.php';
 /**
  * Test specific subclass for getting at various private vars.
  */
-class Html_Template_TestSub extends Html_Template {
+class Html_Template_TestSub extends LooseLeaf\Html_Template {
 
 	/**
 	 * Override since we don't care about an actual file.

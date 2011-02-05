@@ -7,7 +7,7 @@ class HtmlTemplateTest extends PHPUnit_Extensions_OutputTestCase {
 	 * @expectedException Exception
 	 */
 	public function testBadConstructor() {
-		$HT = new Html_Template('foooooooooobar');
+		$HT = new LooseLeaf\Html_Template('foooooooooobar');
 	}
 
 	public function testGetVars_DefaultEmpty() {
@@ -30,14 +30,14 @@ class HtmlTemplateTest extends PHPUnit_Extensions_OutputTestCase {
 
 	public function testGetFile() {
 		$file = __DIR__ . '/helpers/test-template.php';
-		$HT = new Html_Template($file);
+		$HT = new LooseLeaf\Html_Template($file);
 		$this->assertEquals($file, $HT->getFile());
 	}
 
 	public function testRender_Output() {
 		$BAR = sha1(microtime(true));
 		$FOO = md5(microtime(true));
-		$HT = new Html_Template(__DIR__ . '/helpers/test-template.php');
+		$HT = new LooseLeaf\Html_Template(__DIR__ . '/helpers/test-template.php');
 		$HT->bind('BAR', $BAR);
 		$HT->bind('FOO', $FOO);
 
@@ -49,7 +49,7 @@ class HtmlTemplateTest extends PHPUnit_Extensions_OutputTestCase {
 	public function testRender_Return() {
 		$BAR = sha1(microtime(true));
 		$FOO = md5(microtime(true));
-		$HT = new Html_Template(__DIR__ . '/helpers/test-template.php');
+		$HT = new LooseLeaf\Html_Template(__DIR__ . '/helpers/test-template.php');
 		$HT->bind('BAR', $BAR);
 		$HT->bind('FOO', $FOO);
 
@@ -62,7 +62,7 @@ class HtmlTemplateTest extends PHPUnit_Extensions_OutputTestCase {
 	public function testGetBindings_NoBindings() {
 		$HT = $this->_getTestTemplate();
 		$binding_list = $HT->getBindings();
-		$this->assertType('array', $binding_list);
+		$this->assertInternalType('array', $binding_list);
 		$this->assertEquals(0, count($binding_list));
 	}
 
@@ -90,7 +90,7 @@ class HtmlTemplateTest extends PHPUnit_Extensions_OutputTestCase {
 	}
 
 	private function _getTestTemplate() {
-		return new Html_Template(__DIR__ . '/helpers/test-template.php');
+		return new LooseLeaf\Html_Template(__DIR__ . '/helpers/test-template.php');
 	}
 }
 ?>
