@@ -10,6 +10,12 @@ Loose Leaf is a glove, custom tailored to my arthritic claw.
 
 Seriously, right now. This framework has been cobbled together out of the several projects it was informally built as part of. If you want to use a framework, I can not recommend [Artisan System](http://artisansystem.com) because my friend, Vic, built it and he's a jerk. :]
 
+## Dependencies
+
+* PHP 5.3+
+* PHPUnit 3.5+ (to run the test suite)
+* A healthy dose of self loathing
+
 ## Problems? 
 
 Contact <zacharydangercampbell@gmail.com>
