@@ -2,6 +2,8 @@
 namespace LooseLeaf;
 
 class Model {
+	public $ID = 0;
+
 	protected $_data = array();
 
 	public function __set($name, $value) {
