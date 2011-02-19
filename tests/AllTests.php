@@ -8,6 +8,7 @@ require_once __DIR__ . '/StandardLibTest.php';
 require_once __DIR__ . '/HtmlTemplateTest.php';
 require_once __DIR__ . '/ModelTest.php';
 require_once __DIR__ . '/DataMapperTest.php';
+require_once __DIR__ . '/LocatorTest.php';
 
 class LooseLeaf_AllTests {
 	public static function suite() {
@@ -21,6 +22,7 @@ class LooseLeaf_AllTests {
 		$suite->addTestSuite('HtmlTemplateTest');
 		$suite->addTestSuite('\LooseLeaf\Tests\ModelTest');
 		$suite->addTestSuite('\LooseLeaf\Tests\DataMapperTest');
+		$suite->addTestSuite('\LooseLeaf\Tests\LocatorTest');
 		return $suite;
 	}
 }
