@@ -11,4 +11,9 @@ class TestCase extends \PHPUnit_Framework_TestCase {
 	public function getMockPDOStatement() {
 		return $this->getMock('\Std_Class', array('bindValue', 'execute', 'fetchAll'));
 	}
+
+	public static function assertRedirect($url, $request) {
+		$expected = new \LooseLeaf\Redirect_Request($url);
+		self::assertEquals($expected, $request);
+	}
 }
