@@ -14,7 +14,7 @@ class Data_Mapper {
 
 	protected $primary_key;
 
-	public function __construct($connection) {
+	public function __construct($connection = null) {
 		$this->connection = $connection;
 	}
 
