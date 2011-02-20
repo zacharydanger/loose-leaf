@@ -16,4 +16,9 @@ class TestCase extends \PHPUnit_Framework_TestCase {
 		$expected = new \LooseLeaf\Redirect_Request($url);
 		self::assertEquals($expected, $request);
 	}
+
+	public function setPost($post_array = array()) {
+		global $_POST;
+		$_POST = $post_array;
+	}
 }

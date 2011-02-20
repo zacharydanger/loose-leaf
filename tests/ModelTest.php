@@ -6,14 +6,14 @@ require_once __DIR__ . '/../Model.php';
 use LooseLeaf\Model;
 
 class Model_TestSub extends Model {
-	protected $_data = array(
+	protected $data = array(
 		'foo' => null,
 		'bar' => 'foo',
 		'qwerty' => ' asdf '
 	);
 
 	public function _get_qwerty() {
-		return trim($this->_data['qwerty']);
+		return trim($this->data['qwerty']);
 	}
 
 	public function _set_bar($new_value) {
