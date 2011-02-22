@@ -7,11 +7,11 @@ namespace LooseLeaf;
 class Locator {
 	private static $instance;
 
-	private $key_store = array();
+	protected $key_store = array();
 
-	private $defaults = array();
+	protected $defaults = array();
 
-	private function __construct() {
+	protected function __construct() {
 		/* singleton */
 	}
 
